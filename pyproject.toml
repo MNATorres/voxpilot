@@ -27,7 +27,7 @@ packages = ["app"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q --cov=app --cov-report=term-missing"
+addopts = "-q --cov=app --cov-report=term-missing --cov-fail-under=90"
 filterwarnings = [
     "ignore::DeprecationWarning",
 ]
