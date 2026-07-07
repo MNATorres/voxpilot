@@ -1,5 +1,6 @@
 """FastAPI application entry point."""
 
+from asgi_correlation_id import CorrelationIdMiddleware
 from fastapi import FastAPI
 
 from app.core.config import get_settings
@@ -17,6 +18,9 @@ def create_app() -> FastAPI:
         version=settings.version,
         description=settings.description,
     )
+
+    # Generates/propagates a correlation id per request (X-Request-ID header).
+    app.add_middleware(CorrelationIdMiddleware)
 
     app.include_router(health.router)
     app.include_router(speech.router)
