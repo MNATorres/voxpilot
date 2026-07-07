@@ -3,11 +3,13 @@
 from fastapi import FastAPI
 
 from app.core.config import get_settings
+from app.core.logging import configure_logging
 from app.routers import health
 
 
 def create_app() -> FastAPI:
     """Application factory: build and configure the FastAPI instance."""
+    configure_logging()
     settings = get_settings()
 
     app = FastAPI(
