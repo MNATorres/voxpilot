@@ -19,8 +19,8 @@ class SpeechService:
         action = COMMANDS.get(normalized)
 
         if action is None:
-            logger.info("comando no reconocido: %r", command)
+            logger.info("comando no reconocido", recibido=command)
             return {"recognized": False, "action": None}
 
-        logger.info(action)
+        logger.info(action, recibido=command)
         return {"recognized": True, "action": action}
